@@ -10,8 +10,8 @@ load_dotenv()
 
 
 # CONFIGURATION
-MONGO_URI = "mongodb://localhost:27017/" 
-DB_NAME = "streamvault"
+MONGO_URI = os.getenv("MONGO_URI")
+DB_NAME = os.getenv("streamvault")
 
 EVENTHUB_CONNECTION_STR = os.getenv("EVENTHUB_KEY")
 def load_data_with_mongodb():
