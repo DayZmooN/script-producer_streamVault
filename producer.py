@@ -3,11 +3,17 @@ from pymongo import MongoClient
 import random
 from azure.eventhub import EventHubProducerClient, EventData
 import json
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 # CONFIGURATION
 MONGO_URI = "mongodb://localhost:27017/" 
 DB_NAME = "streamvault"
-EVENTHUB_CONNECTION_STR = "Endpoint=sb://eventhubstreamvaultkr.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=qKYCqjh/cLj6hm6tCeIkMVSjpsKDUksLv+AEhBnuzqo=;EntityPath=commandes-hub"
+
+EVENTHUB_CONNECTION_STR = os.getenv("EVENTHUB_KEY")
 def load_data_with_mongodb():
     try:
         client_mongo = MongoClient(MONGO_URI)
